@@ -11,6 +11,14 @@ def get_num_characters(text):
             result[char] = 1
     return result
 
+def target_word_search(text, target_word):
+    split_text = text.split()
+    counter = 0
+    for word in split_text:
+        if word.lower() == target_word.lower():
+            counter += 1
+    return counter
+
 def sort_on(list_dicts):
     return list_dicts['num']
 
