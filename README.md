@@ -16,6 +16,6 @@ For example:
 
 python3 main.py /books/frankenstein.txt monster
 
-This will return the number of occurences of the word "monster" within the text.
+This will return the number of occurrences of the word "monster" within the text.
 
 A small number of sample books are availible within the repository, which have been provided by [Project Gutenberg](https://www.gutenberg.org/about/)
