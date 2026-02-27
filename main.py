@@ -1,5 +1,6 @@
 from stats import get_num_words, get_num_characters, list_of_dicts, target_word_search
 import sys
+import time
 
 
 def get_arguments():
@@ -19,7 +20,19 @@ def get_book_text(path_to_file):
 
 
 def print_report(path_to_file,num_words, num_chars, num_target_word, target_word, report):
-    print("============ BOOKBOT ============")
+    print("==============================================================")
+    print("  ██████╗  ██████╗  ██████╗ ██╗  ██╗██████╗  ██████╗ ████████╗")
+    print("  ██╔══██╗██╔═══██╗██╔═══██╗██║ ██╔╝██╔══██╗██╔═══██╗╚══██╔══╝")
+    print("  ██████╔╝██║   ██║██║   ██║█████╔╝ ██████╔╝██║   ██║   ██║   ")
+    print("  ██╔══██╗██║   ██║██║   ██║██╔═██╗ ██╔══██╗██║   ██║   ██║   ")
+    print("  ██████╔╝╚██████╔╝╚██████╔╝██║  ██╗██████╔╝╚██████╔╝   ██║   ")
+    print("  ╚═════╝  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚═════╝   ╚═╝   ")
+    print("==============================================================")
+    time.sleep(0.5)
+    print("Loading..", end="", flush=True)
+    for _ in range(5):
+        time.sleep(0.7)
+        print(".", end="", flush=True)
     print(f"Analyzing book found at {path_to_file}")
     print("----------- Word Count ----------")
     print(f"Found {num_words} total words")
