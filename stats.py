@@ -40,10 +40,11 @@ def word_dictionary(text):
             word_dict[cleaned_word] = 1
     return word_dict
 
-def most_common_words(text, n=10):
+def most_common_words(text, stopwords, n=10):
     word_list = []
     word_dict = word_dictionary(text)
     for key, value in word_dict.items():
-        word_list.append({'word': key, 'num': value})
+        if key not in stopwords:
+            word_list.append({'word': key, 'num': value})
     word_list.sort(key=sort_on, reverse=True)
     return word_list[:n]

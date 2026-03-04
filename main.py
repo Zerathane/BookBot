@@ -18,6 +18,11 @@ def get_book_text(path_to_file):
     with open(path_to_file) as f:
         return f.read()
 
+def get_stopwords(path_to_stopwords_file):
+    with open("stopwords.txt") as f:
+        stopwords = f.read().split()
+    return set(stopwords)
+
 
 def print_report(path_to_file,num_words, num_chars, num_target_word, target_word, report, most_common_wrd):
     print("==============================================================")
@@ -56,7 +61,8 @@ def main():
     text = get_book_text(path_to_file)
     num_words = get_num_words(text)
     num_chars = get_num_characters(text)
-    most_common_wrd = most_common_words(text, n=10)
+    stopwords = get_stopwords("stopwords.txt")
+    most_common_wrd = most_common_words(text, stopwords, n=10)
     if target_word:
         num_target_word = target_word_search(text, target_word)
     else: 
