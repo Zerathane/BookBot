@@ -15,7 +15,7 @@ def target_word_search(text, target_word):
     split_text = text.split()
     counter = 0
     for word in split_text:
-        if word.strip("!.,;:'\"()[]{}").lower() == target_word.lower():
+        if word.strip("!“.,;:'\"()[]{}").lower() == target_word.lower():
             counter += 1
     return counter
 
@@ -33,7 +33,7 @@ def word_dictionary(text):
     word_dict = {}
     split_text = text.split()
     for word in split_text:
-        cleaned_word = word.strip("!.,;:'\"()[]{}").lower()
+        cleaned_word = word.strip("“!.,;:'\"()[]{}").lower()
         if cleaned_word in word_dict:
             word_dict[cleaned_word] += 1
         else:
