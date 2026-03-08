@@ -24,7 +24,7 @@ def get_stopwords(path_to_stopwords_file):
     return set(stopwords)
 
 
-def print_report(path_to_file,num_words, num_chars, num_target_word, target_word, report, most_common_wrd):
+def print_report(path_to_file,num_words, num_chars, num_target_word, target_word, report, most_common_wrd, target_word_sentences):
     print("==============================================================")
     print("  ██████╗  ██████╗  ██████╗ ██╗  ██╗██████╗  ██████╗ ████████╗")
     print("  ██╔══██╗██╔═══██╗██╔═══██╗██║ ██╔╝██╔══██╗██╔═══██╗╚══██╔══╝")
@@ -42,8 +42,13 @@ def print_report(path_to_file,num_words, num_chars, num_target_word, target_word
     print("----------- Word Count ----------")
     print(f"Found {num_words} total words")
     if num_target_word:
-        print("------ Target Word Count ----")
-        print(f"Found {num_target_word} occurrences of the word '{target_word}'")
+        print("-------- Target Word Count ------")
+        print(f"The word '{target_word}' was found {num_target_word} times in the text.")
+        print("---------------------------------")
+        print(f" The word '{target_word}' appears in the following sentences:")
+        print("---------------------------------")
+        for sentence in target_word_sentences:
+            print(f"  - {sentence}")
     print("------- most common words -------")
     for item in most_common_wrd:
         print(f"{item['word']}: {item['num']}")
@@ -65,9 +70,11 @@ def main():
     most_common_wrd = most_common_words(text, stopwords, n=10)
     if target_word:
         num_target_word = target_word_search(text, target_word)
+        target_word_sentences = target_word_in_sentence(text, target_word)
     else: 
         num_target_word = None
+        target_word_sentences = None
     report = character_dictionary(num_chars)
-    print_report(path_to_file, num_words, num_chars, num_target_word, target_word, report, most_common_wrd)
+    print_report(path_to_file, num_words, num_chars, num_target_word, target_word, report, most_common_wrd, target_word_sentences)
 
 main()

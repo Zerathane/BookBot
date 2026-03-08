@@ -44,7 +44,20 @@ def most_common_words(text, stopwords, n=10):
     word_list = []
     word_dict = word_dictionary(text)
     for key, value in word_dict.items():
-        if key not in stopwords:
+        if len(key) > 1 and key not in stopwords:
             word_list.append({'word': key, 'num': value})
     word_list.sort(key=sort_on, reverse=True)
     return word_list[:n]
+
+def target_word_in_sentence(text, target_word, n=8):
+    text = text.replace('?', '.').replace('!', '.')
+    sentences = text.split(".")
+    sentences_list = []
+    for sentence in sentences:
+        sentence = sentence.replace('\n', ' ').strip().lstrip('"” ')
+        if target_word.lower() in sentence.lower() and sentence:
+            sentences_list.append(sentence)
+            if len(sentences_list) >= n:
+                break
+            
+    return sentences_list
