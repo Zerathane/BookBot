@@ -35,27 +35,32 @@ def print_report(path_to_file,num_words, num_chars, num_target_word, target_word
     print("==============================================================")
     time.sleep(0.5)
     print("Loading..", end="", flush=True)
-    for _ in range(5):
+    for _ in range(4):
         time.sleep(0.7)
         print(".", end="", flush=True)
     print(f"Analyzing book found at {path_to_file}")
+    time.sleep(1)
     print("----------- Word Count ----------")
     print(f"Found {num_words} total words")
     if num_target_word:
         print("-------- Target Word Count ------")
+        time.sleep(1)
         print(f"The word '{target_word}' was found {num_target_word} times in the text.")
         print("---------------------------------")
-        print(f" The word '{target_word}' appears in the following sentences:")
+        print(f"The word '{target_word}' appears in the following sentences:")
         print("---------------------------------")
+        time.sleep(1)
         for sentence in target_word_sentences:
             print(f"  - {sentence}")
+    time.sleep(1)
     print("------- most common words -------")
     for item in most_common_wrd:
-        print(f"{item['word']}: {item['num']}")
+        print(f"{item["word"]}: {item["num"]}")
+    time.sleep(1)
     print("--------- Character Count -------")
     for item in report:
         if item["char"].isalpha():
-            print(f"{item['char']}: {item['num']}")
+            print(f"{item["char"]}: {item["num"]}")
         else:
             continue
     print("============= END ===============")
