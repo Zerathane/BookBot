@@ -49,7 +49,7 @@ def most_common_words(text, stopwords, n=10):
     word_list.sort(key=sort_on, reverse=True)
     return word_list[:n]
 
-def target_word_in_sentence(text, target_word, n=8):
+def target_word_in_sentence(text, target_word):
     text = text.replace("?", ".").replace("!", ".")
     sentences = text.split(".")
     sentences_list = []
@@ -57,7 +57,16 @@ def target_word_in_sentence(text, target_word, n=8):
         sentence = sentence.replace("\n", " ").strip().lstrip(" -\t”“")
         if target_word.lower() in sentence.lower() and sentence:
             sentences_list.append(sentence)
-            if len(sentences_list) >= n:
-                break
-            
-    return sentences_list
+    length = len(sentences_list)
+    section = length // 3
+    if length < 3:
+        return {
+            "Beginning": sentences_list,
+            "Middle": [],
+            "End": []
+        }
+    return {
+        "Beginning": sentences_list[:section][:3],
+        "Middle": sentences_list[section:2*section][:4],
+        "End": sentences_list[2*section:][:4]
+    }

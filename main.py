@@ -45,13 +45,13 @@ def print_report(path_to_file,num_words, num_chars, num_target_word, target_word
     if num_target_word:
         print("-------- Target Word Count ------")
         time.sleep(1)
-        print(f"The word '{target_word}' was found {num_target_word} times in the text.")
-        print("---------------------------------")
-        print(f"The word '{target_word}' appears in the following sentences:")
+        print(f"The word '{target_word}' was found {num_target_word} times in the text, and appears in the following sentences:")
         print("---------------------------------")
         time.sleep(1)
-        for sentence in target_word_sentences:
-            print(f"  - {sentence}")
+        for section, sentences in target_word_sentences.items():
+            print(f"\n{section}:")
+            for sentence in sentences:
+                print(f"  - {sentence}")
     time.sleep(1)
     print("------- most common words -------")
     for item in most_common_wrd:
