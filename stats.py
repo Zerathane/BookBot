@@ -50,12 +50,14 @@ def most_common_words(text, stopwords, n=10):
     return word_list[:n]
 
 def target_word_in_sentence(text, target_word):
-    text = text.replace("?", ".").replace("!", ".")
-    sentences = text.split(".")
+    text_replace = text.replace("?", ".").replace("!", ".")
+    sentences = text_replace.split(".")
     sentences_list = []
     for sentence in sentences:
         sentence = sentence.replace("\n", " ").strip().lstrip(" -\t”“")
-        if target_word.lower() in sentence.lower() and sentence:
+        word = sentence.split()
+        match = any(word.strip("!“.,;:'\"()[]{}").lower() == target_word.lower() for word in word)
+        if match and sentence:
             sentences_list.append(sentence)
     length = len(sentences_list)
     section = length // 3

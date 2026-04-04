@@ -42,14 +42,12 @@ def print_report(path_to_file,num_words, num_chars, num_target_word, target_word
     time.sleep(1)
     print("----------- Word Count ----------")
     print(f"Found {num_words} total words")
-    if num_target_word:
+    if num_target_word is not None:
         print("-------- Target Word Count ------")
         time.sleep(1)
-        print(f"The word '{target_word}' was found {num_target_word} times in the text, and appears in the following sentences:")
-        print("---------------------------------")
+        print(f"The word '{target_word}' was found {num_target_word} times in the text.")
         time.sleep(1)
         for section, sentences in target_word_sentences.items():
-            print(f"\n{section}:")
             for sentence in sentences:
                 print(f"  - {sentence}")
     time.sleep(1)
